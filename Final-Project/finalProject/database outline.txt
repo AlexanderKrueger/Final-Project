@@ -1,0 +1,66 @@
+1) ServerClusters
+	a) ClusterID
+	b) ServerID
+	c) ClusterLocation (note: country)
+2) Servers
+	a) ServerID
+	b) ServerAge (years)
+	c) RunningCostPerHour
+	c) WritingPerformance (GBS)
+	d) ReadingPerformance (GBS)
+3) ServerMonitors (employees)
+	a) EmployeeID
+	b) MaintainedClusterID (ClusterID of server cluster employee maintains; each employee can have only 1 cluster)
+	c) ReportsTo (EmployeeID of employee this employee reports to)
+	d) FName
+	e) LName
+	f) HourlyWadge
+5) Advertisments
+	a) AdvertismentID
+	b) AdvertismentLength
+	c) AdvertismentPay
+	d) TargetGeneres (for targeting appropriate audience)
+6) GenereGroups (for many-many relationship)
+	a) AdvertismentID
+	b) GenereID
+7) Genere
+	a) GenereID
+	b) GenereName
+8) MoneyStatsView
+	a) Costs
+	b) Gains
+	c) Profit (Gains - Costs)
+6) ContentPopularityView
+	a) MostPopularShow
+	b) MostPopularMovie
+	c) TopFiveGeneres (requires extra table. perhaps catch as an entry in "GenereGroups")
+7) ServerStatsView
+	a) AvgEmployeesPerCluster
+	b) AvgClusterMaintenceCost
+	c) AvgReadingPerformance
+	d) AvgWritingPerformance
+
+8) Account
+	a) AccountID
+	b) username
+	c) password
+	d) subscriptionID
+
+9) Subscription
+	a) SubscriptionID
+	b) SubscriptionName
+	c) SubscriptionPrice
+
+--- Other Things Tracked ---
+VideoContent
+
+Account
+
+Region
+
+Movie
+
+Show
+
+--other email--
+sallen6
