@@ -51,16 +51,6 @@
 	b) SubscriptionName
 	c) SubscriptionPrice
 
---- Other Things Tracked ---
-VideoContent
-
-Account
-
-Region
-
-Movie
-
-Show
-
---other email--
-sallen6
+====================================================
+----------- Notes ---------------------------------
+====================================================
