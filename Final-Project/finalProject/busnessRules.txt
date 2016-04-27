@@ -1,8 +1,0 @@
-Buisness Rules
-1.) No employee Information.
-2.) Knowledge of server locations, and online status.
-3.) Customer Information to be kept to a minimum to prevent Identety theft where ever possible.
-4.) Storage of Mac Addresses per account based on tier of subscription as well as amount of devices linked to one account
-5.) Something with parental controlls* Maybe
-6.) Banning of accounts for misconduct.
-7.) Track purchasis of movie's vs streaming, and by region
