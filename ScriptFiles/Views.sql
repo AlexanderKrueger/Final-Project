@@ -19,10 +19,9 @@ CREATE OR REPLACE VIEW ContentPopularityView
 SELECT
 	MostPopularShowQuery.Result AS MostPopularShow
 	MostPopularMovieQuery.Result AS MostPopularMovie
-	TopFiveGeneresQuery.Result AS TopFiveGeneres
-FROM
-	-- Query that all subquerys are joined to
-	
+	-- procedure 'getTop5GeneresAsString' needs to be created before use
+	getTop5GeneresAsString() AS TopFiveGeneres
+FROM	
 	-- Subquerys
 	(
 	SELECT
@@ -41,23 +40,7 @@ FROM
 	HAVING
 		BaseQuery.Views = Max(BaseQuery.SumViews)
 	LIMIT 1;	
-	)AS MostPopularShowQuery,
-	(
-	SELECT
-		-- TODO: add column MovieName
-		CONCAT(MovieName, ", Views: ", Views) AS Result
-	FROM
-		Movies
-	HAVING
-		Views = Max(Views);		
-	)AS MostPopularMovieQuery,
-	(
-	SELECT
-		AS Result
-	FROM
-	-- not sure how to pull this subquery off	
-	LIMIT 5;	
-	)AS TopFiveGeneresQuery,
+	)AS MostPopularShowQuery
 )
 
 CREATE OR REPLACE VIEW MoneyStatsView
@@ -77,7 +60,7 @@ FROM
 	) AS CostsQuery,
 	(
 	SELECT
-					-- assumes 4 advertisments per hour done all year
+		-- assumes yearly price  -- assumes 4 advertisments per hour done all year
 		SUM(SubscriptionPrice) + Sum(AdvertismentPay * 4 * 8760) AS Result
 	FROM
 		Account JOIN Subscription ON Account.SubscriptionID = Subscription.SubscriptionID,
