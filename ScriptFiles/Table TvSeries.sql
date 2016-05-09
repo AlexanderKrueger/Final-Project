@@ -1,8 +1,0 @@
-CREATE TABLE IF NOT EXISTS Tv_Series
-(
-TvSeriesID INT (15) NOT NULL AUTO_INCREMENT,
-SeriesName VARCHAR (25) NOT NULL,
-VideoContentID INT (20) NOT NULL,
-CONSTRAINT pk_TvSeriesID PRIMARY KEY (TvSeriesID),
-CONSTRAINT fk_VideoContentID FOREIGN KEY (VideoContentID) REFERNECES Episodes (VideoContentID)
-)
