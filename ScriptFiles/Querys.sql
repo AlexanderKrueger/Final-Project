@@ -6,27 +6,27 @@
     FROM
         (
         SELECT
-            password AS Result
+            pass_word AS Result
         FROM
         Accounts
         WHERE
-            password NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
+            pass_word NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
         ) AS WeakPasswordsQuery,
         (
         SELECT
-            password AS Result
+            pass_word AS Result
         FROM
         Accounts
         WHERE
-            password NOT REGEXP "[a-zA-Z[:digit:]]+" OR password NOT REGEXP "[!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            pass_word NOT REGEXP "[a-zA-Z[:digit:]]+" OR password NOT REGEXP "[!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
         ) AS SemiStrongPasswordsQuery,
         (
         SELECT
-            password AS Result
+            pass_word AS Result
         FROM
         Accounts
         WHERE
-            password REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            pass_word REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
         ) AS StrongPasswordsQuery
         ,Accounts;
 
@@ -130,7 +130,7 @@
 -- ProfitOfEachCountry
     SELECT
         RegionName,
-        ROUND((SUM(SubscriptionPrice) + Sum(AdvertismentPay * 4 * 8760)/COUNT(Account.AccountID)), 2) - SUM(RunningCostPerHour * 8760) AS Profit
+        ROUND((SUM(SubscriptionPrice) + Sum(AdvertismentPay * 4 * 8760)/COUNT(Regions.RegionID)), 2) - SUM(RunningCostPerHour * 8760) AS Profit
     FROM
         Account JOIN Subscription ON Account.SubscriptionID = Subscription.SubscriptionID,
 	Advertisments,
