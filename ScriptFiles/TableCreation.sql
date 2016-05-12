@@ -1,37 +1,37 @@
-Drop database if exists VideoStreemers;
-Create Database VideoStreemers;
-Use VideoStreemers;
+DROP DATABASE IF EXISTS VideoStreemers;
+CREATE DATABASE VideoStreemers;
+USE VideoStreemers;
 CREATE TABLE IF NOT EXISTS Account
 (
 AccountID INT (10) NOT NULL AUTO_INCREMENT,
 UserName VARCHAR (20) NOT NULL,
 Password VARCHAR (15) NOT NULL,
-SubscriptionId Int (10) NOT NULL, 
+SubscriptionId INT (10) NOT NULL, 
 AddressID INT (10) NOT NULL,
 CONSTRAINT pk_AccountId PRIMARY KEY(AccountId)
 );
 
 CREATE TABLE IF NOT EXISTS ServerClusters
 (
-ClusterID int (10) not null auto_increment,
-RegionID int (10) not null,
-ServerID int (10) not null,
-AccountID int (10) not null,
-CONSTRAINT pk_ClusterID primary key (ClusterID)
+ClusterID INT (10) NOT NULL AUTO_INCREMENT,
+RegionID INT (10) NOT NULL,
+ServerID INT (10) NOT NULL,
+AccountID INT (10) NOT NULL,
+CONSTRAINT pk_ClusterID PRIMARY KEY (ClusterID)
 );
-create table if not exists Region
+CREATE TABLE IF NOT EXISTS Region
 (
-RegionID int (10) not null,
-AccountID int( 10) not null,
-CONSTRAINT pk_RegionID primary key(RegionID)
+RegionID INT (10) NOT NULL,
+AccountID INT( 10) NOT NULL,
+CONSTRAINT pk_RegionID PRIMARY KEY(RegionID)
 -- CONSTRAINT fk_accountID FOREIGN KEY(accountID)
 -- References Account (AccountId)
 );
 CREATE TABLE IF NOT EXISTS Genere
 (
-GenereID int (10) not null auto_increment,
-GenereName varchar (20) not null,
-CONSTRAINT pk_GenereID primary KEY (GenereID)
+GenereID INT (10) NOT NULL AUTO_INCREMENT,
+GenereName VARCHAR (20) NOT NULL,
+CONSTRAINT pk_GenereID PRIMARY KEY (GenereID)
 );
 CREATE TABLE IF NOT EXISTS Addresses
 (
@@ -45,17 +45,21 @@ CONSTRAINT pk_Addresses PRIMARY KEY(AddressID)
 );
 CREATE TABLE IF NOT EXISTS Advertisments
 (
-AdvertismentID int (10) not null auto_increment,
-AdvertismentLength int (5) not null,
-AdvertismentPay int (10) not null,
-TargetGeneres varchar (20) not null,
-CONSTRAINT pk_AdvertismentID primary key (AdvertismentID)
+AdvertismentID INT (10) NOT NULL AUTO_INCREMENT,
+AdvertismentLength INT (5) NOT NULL,
+-- 5/12/2016 : datatype was int, needed to be decimal
+AdvertismentPay DECIMAL (10, 2) NOT NULL,
+-- TargetGeneres is a foreign key for generegroups
+TargetGeneres INT (10) NOT NULL,
+CONSTRAINT pk_AdvertismentID PRIMARY KEY (AdvertismentID)
 );
-create table if not exists GenereGroups
+CREATE TABLE IF NOT EXISTS GenereGroups
 (
-AdvertismentID int (10) not null,
-GenereID int (10) not null,
-AccountID int (10) not null
+GenereGroupsID INT (10) NOT NULL,
+-- AdvertismentID int (10) not null,
+GenereID INT (10) NOT NULL,
+AccountID INT (10) NOT NULL,
+CONSTRAINT pk_GenereGroupsID PRIMARY KEY (GenereGroupsID)
 -- CONSTRAINT fk_AdvertismentID Foreign key (AdvertismentID)
 -- References Advertisment (AdvertismentID),
 -- CONSTRAINT fk_GenereID FOREIGN KEY (GenereID)
@@ -63,19 +67,19 @@ AccountID int (10) not null
 -- CONSTRAINT fk_AccountID foreign key (AccountID)
 -- References Account (AccountID)
 );
-create table if not exists VideoContent
+CREATE TABLE IF NOT EXISTS VideoContent
 (
-VideoContentID int (10) not null auto_increment,
-VideoContent varchar (20) not null,
-CONSTRAINT pk_VideoContentID Primary key (VideoContentID)
+VideoContentID INT (10) NOT NULL AUTO_INCREMENT,
+VideoContent VARCHAR (20) NOT NULL,
+CONSTRAINT pk_VideoContentID PRIMARY KEY (VideoContentID)
 );
-create table if not exists Subscription
+CREATE TABLE IF NOT EXISTS Subscription
 (
-SubscriptionID int (10) not null auto_increment,
-SubscriptionName varchar(20) not null,
-SubscriptionPrice int (20) not null,
-AccountID int (10) not null,
-CONSTRAINT pk_SubscriptionID primary key (SubscriptionID)
+SubscriptionID INT (10) NOT NULL AUTO_INCREMENT,
+SubscriptionName VARCHAR(20) NOT NULL,
+SubscriptionPrice INT (20) NOT NULL,
+AccountID INT (10) NOT NULL,
+CONSTRAINT pk_SubscriptionID PRIMARY KEY (SubscriptionID)
 -- CONSTRAINT fk_AccountID foreign key (AccountID)
 -- References Account (AccountID)
 );
@@ -139,9 +143,12 @@ ADD CONSTRAINT fk_RegionID FOREIGN KEY (RegionID) REFERENCES Region (RegionID),
 ADD CONSTRAINT fk_ServerID FOREIGN KEY (ServerID) REFERENCES Servers (ServerID);
 
 ALTER TABLE GenereGroups
-ADD CONSTRAINT fk_AdvertismentID FOREIGN KEY (AdvertismentID) REFERENCES Advertisments (AdvertismentID),
+-- ADD CONSTRAINT fk_AdvertismentID FOREIGN KEY (AdvertismentID) REFERENCES Advertisments (AdvertismentID),
 ADD CONSTRAINT fk_GenereID FOREIGN KEY (GenereID) REFERENCES Genere (GenereID),
 ADD CONSTRAINT fk_AccountIDInGenereGroups FOREIGN KEY (AccountID) REFERENCES Account (AccountID);
+
+ALTER TABLE Advertisments
+ADD CONSTRAINT fk_GenereGroupsInAdvertisments FOREIGN KEY (TargetGeneres) REFERENCES GenereGroups (GenereGroupsID);
 
 ALTER TABLE Subscription
 ADD CONSTRAINT fk_AccountIDInSubscription FOREIGN KEY (AccountID) REFERENCES Account (AccountID);
