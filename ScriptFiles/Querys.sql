@@ -6,15 +6,15 @@
     FROM
         (
         SELECT
-            pass_word AS Result
+            password AS Result
         FROM
         Accounts
         WHERE
-            pass_word NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
+            password NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
         ) AS WeakPasswordsQuery,
         (
         SELECT
-            pass_word AS Result
+            password AS Result
         FROM
         Accounts
         WHERE
@@ -22,11 +22,11 @@
         ) AS SemiStrongPasswordsQuery,
         (
         SELECT
-            pass_word AS Result
+            password AS Result
         FROM
         Accounts
         WHERE
-            pass_word REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            password REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
         ) AS StrongPasswordsQuery
         ,Accounts;
 
