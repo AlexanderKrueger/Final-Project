@@ -46,6 +46,7 @@ CONSTRAINT pk_Addresses PRIMARY KEY(AddressID)
 CREATE TABLE IF NOT EXISTS Advertisments
 (
 AdvertismentID int (10) not null auto_increment,
+advertiser varchar (40) not null,
 AdvertismentLength int (5) not null,
 AdvertismentPay int (10) not null,
 TargetGeneres varchar (20) not null,
@@ -102,6 +103,7 @@ CREATE TABLE IF NOT EXISTS Movies
 (
 MovieID INT (15) NOT NULL AUTO_INCREMENT,
 VideoContentID INT (10) NOT NULL,
+MovieName varchar (30) not null,
 Views INT (10) NOT NULL,
 CONSTRAINT pk_MovieID PRIMARY KEY (MovieID)
 );

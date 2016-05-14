@@ -1,3 +1,128 @@
+insert into region
+values
+(null, 1),
+(null, 2),
+(null, 3),
+(null , 4),
+(null, 5),
+(null, 6),
+(null, 7),
+(null, 8),
+(null, 9),
+(null, 10),
+(null, 11),
+(null, 12),
+(null, 13),
+(null, 14),
+(null, 15);
+
+insert into season
+values
+(null, 1, 1, 1),
+(null, 2, 2, 1),
+(null, 3, 3, 1),
+(null, 4, 4, 1),
+(null, 5, 5, 1),
+(null, 6, 6, 1),
+(null, 7, 7, 1),
+(null, 8, 8, 1),
+(null, 9, 9, 1),
+(null, 10, 10, 1),
+(null, 11, 11, 1),
+(null, 12, 12, 1),
+(null, 13, 13, 1),
+(null, 14, 14, 1),
+(null, 15, 15, 1);
+
+insert into episodes
+values
+(null, 1, 1, "episode 1", "n/a", 1),
+(null, 2, 2, "episode 1", "n/a", 2),
+(null, 3, 3, "episode 1", "n/a", 3),
+(null, 4, 4, "episode 1", "n/a", 4),
+(null, 5, 5, "episode 1", "n/a", 5),
+(null, 6, 6, "episode 1", "n/a", 6),
+(null, 7, 7, "episode 1", "n/a", 7),
+(null, 8, 8, "episode 1", "n/a", 8),
+(null, 9, 9, "episode 1", "n/a", 9),
+(null, 10, 10, "episode 1", "n/a", 10),
+(null, 11, 11, "episode 1", "n/a", 11),
+(null, 12, 12, "episode 1", "n/a", 12),
+(null, 13, 13, "episode 1", "n/a", 13),
+(null, 14, 14, "episode 1", "n/a", 14),
+(null, 15, 15, "episode 1", "n/a", 15);
+
+insert into movies
+values
+(null, 1, "The Lion King", 1),
+(null, 2, "The Mask", 2),
+(null, 3, "A knights Tale", 3),
+(null, 4, "Rocky Horrer Picture Show", 4),
+(null, 5, "Saw", 5),
+(null, 6, "Fival Goes West", 6),
+(null, 7, "Nightmare Before Christmas", 7),
+(null, 8, "Hurt Locker", 8),
+(null, 9, "The Intern", 9),
+(null, 10, "Blind Side", 10),
+(null, 11, "Titan AE", 11),
+(null, 12, "James and the Giant Peach", 12),
+(null, 13, "Rocky", 13),
+(null, 14, "The Rock", 14),
+(null, 15, "It", 15);
+
+insert into advertisments
+values
+(null, "Coke", 30, 10, "All"),
+(null, "Pepsi", 30, 8, "All"),
+(null, "League, of Legends", 15, 25, "Children"),
+(null, "Redenboker", 10, 5, "All"),
+(null, "Jiffy Lube", 30, 10, "Comedy, Horer, Romantic"),
+(null, "Trojan", 10, 10, "Romantic, Comedy"),
+(null, "Pet Smart", 5, 1, "Children"),
+(null, "Jiff", 8, 3, "Children"),
+(null, "McDonalds", 30, 10, "All"),
+(null, "VideoStreemers", 10, 0, "All"),
+(null, "20th Century Fox", 15, 15, "All"),
+(null, "Disney", 15, 15, "All"),
+(null, "Denteen Ice", 10, 5, "All"),
+(null, "Stride", 10, 5, "All"),
+(null, "FaceBook", 5, 10, "All");
+
+insert into generegroups
+values
+(null, 1, 1),
+(null, 2, 2),
+(null, 3, 3),
+(null, 4, 4),
+(null, 5, 5),
+(null, 6, 6),
+(null, 7, 7),
+(null, 9, 9),
+(null, 10, 10),
+(null, 11, 11),
+(null, 12, 12),
+(null, 13, 13),
+(null, 14, 14),
+(null, 15, 15);
+
+insert into tvseries
+values
+(null, "Dexter", 1),
+(null, "Family Guys", 2),
+(null, "Dr Who", 3),
+(null, "Sherlock", 4),
+(null, "Game of Throans", 5),
+(null, "Scorpion", 6),
+(null, "CSI", 7),
+(null, "Merlin", 8),
+(null, "Fear Factor", 9),
+(null, "Murder She Wrote", 10),
+(null, "Dragon Tails", 11),
+(null, "Tails from the Crypts", 12),
+(null, "Vegi Tails", 13),
+(null, "Futurama", 14),
+(null, "Full Metal Alchamist", 15);
+
 insert into addresses
 values
 (null, '123Australiastreet', 'Sydny', 'Sydny', 55555, 'Australia'),
