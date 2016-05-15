@@ -1,38 +1,43 @@
+insert into Region
+(RegionID, RegionName)
+values
+(null    , "USA"),
+(null    , "CANADA"),
+(null    , "France"),
+(null    , "Poland"),
+(null    , "Italy"),
+(null    , "Sweden"),
+(null    , "Greenland"),
+(null    , "Ukraine"),
+(null    , "United Kingdome"),
+(null    , "Germany"),
+(null    , "China"),
+(null    , "Colombia"),
+(null    , "Mexico"),
+(null    , "Cuba"),
+(null    , "India");
+
+
+
 INSERT INTO Addresses
 VALUES
-(NULL, '123Australiastreet'     , 'Sydny'           , 'Sydny'    , 55555, 'Australia'),
-(NULL, '456ZimbabwayAve'        , 'Zimbabway'       , 'Zimbabway', 12345, 'Zimbabway'),
-(NULL, '789JanesvilleStreet'    , 'Janesville'      , 'WI'       , 53546, 'USA'),
-(NULL, '123Notingham'           , 'Lincoln'         , 'NE'       , 88645, 'USA'),
-(NULL, 'PSherman42WallabyLn'    , 'Sydny'           , 'Australia', 55555, 'Australia'),
-(NULL, 'CincoDeMayoAve'         , 'MexicoCity'      , 'Mexico'   , 12121, 'Mexico'),
-(NULL, 'Lithgowlane'            , 'Sevilla'         , 'Spain'    , 56489, 'Spain'),
-(NULL, 'kenedyAve'              , 'Zimbabway'       , 'Zimbabway', 12345, 'Zimbabway'),
-(NULL, 'yupperRoad'             , 'Canada'          , 'AL'       , 54878, 'Canada'),
-(NULL, 'Zebralake'              , 'Zimbabway'       , 'Zimbabway', 56846, 'Zimbabway'),
-(NULL, '13847 W, Deerfield Ave.', 'Rockford'        , 'IL'       , 59459, 'USA'),
-(NULL, '2329 Edison Drive'      , 'Atlanta'         , 'GA'       , 84747, 'USA'),
-(NULL, '93938 Racoom Drive'     , 'Huston'          , 'TX'       , 33948, 'USA'),
-(NULL, '342111 Lestianson Lane' , 'Jasplan Provance', 'India'    , 54686, 'India'),
-(NULL, '75648 Lexington Court'  , 'Janesville'      , 'WI'       , 53545, 'USA');
+(NULL, '123Australiastreet'     , 'Sydny'           , 'Sy'/*dny'*/    , 55555, 'Australia'),
+(NULL, '456ZimbabwayAve'        , 'Zimbabway'       , 'Zi'/*mbabway'*/, 12345, 'Zimbabway'),
+(NULL, '789JanesvilleStreet'    , 'Janesville'      , 'WI'            , 53546, 'USA'),
+(NULL, '123Notingham'           , 'Lincoln'         , 'NE'            , 88645, 'USA'),
+(NULL, 'PSherman42WallabyLn'    , 'Sydny'           , 'Au'/*stralia'*/, 55555, 'Australia'),
+(NULL, 'CincoDeMayoAve'         , 'MexicoCity'      , 'Me'/*xico'*/   , 12121, 'Mexico'),
+(NULL, 'Lithgowlane'            , 'Sevilla'         , 'Sp'/*ain'*/    , 56489, 'Spain'),
+(NULL, 'kenedyAve'              , 'Zimbabway'       , 'Zi'/*mbabway'*/, 12345, 'Zimbabway'),
+(NULL, 'yupperRoad'             , 'Canada'          , 'AL'            , 54878, 'Canada'),
+(NULL, 'Zebralake'              , 'Zimbabway'       , 'Zi'/*mbabway'*/, 56846, 'Zimbabway'),
+(NULL, '13847 W, Deerfield Ave.', 'Rockford'        , 'IL'            , 59459, 'USA'),
+(NULL, '2329 Edison Drive'      , 'Atlanta'         , 'GA'            , 84747, 'USA'),
+(NULL, '93938 Racoom Drive'     , 'Huston'          , 'TX'            , 33948, 'USA'),
+(NULL, '342111 Lestianson Lane' , 'Jasplan Provance', 'In'/*dia'*/    , 54686, 'India'),
+(NULL, '75648 Lexington Court'  , 'Janesville'      , 'WI'            , 53545, 'USA');
 
-INSERT INTO Account
-VALUES
-(NULL, 'AndrewJohanzon', 'purple11'  ,  1,  1),
-(NULL, 'DarlaSmith'    , 'Dragons11' ,  2,  2),
-(NULL, 'GeremeyLang'   , '11Dark30'  ,  3,  3),
-(NULL, 'ChrisChristy'  , 'angels'    ,  4,  4),
-(NULL, 'JohnHector'    , 'draco'     ,  5,  5),
-(NULL, 'KyleClarkson'  , 'Metor'     ,  6,  6),
-(NULL, 'BruceWayne'    , 'LetterB'   ,  7,  7),
-(NULL, 'KevenSmith'    , 'clerks'    ,  8,  8),
-(NULL,'SaniaTwain'     , 'songstress',  9,  9),
-(NULL, 'FrankAbignail' , 'abcd'      , 10, 10),
-(NULL, 'jjford768'     , 'darkDark'  , 11, 11),
-(NULL, 'catwomanan45'  , 'Draco1947' , 12, 12),
-(NULL, 'rboom8'        , 'binary12'  , 13, 13),
-(NULL, 'Abudula99'     , 'Lefty4'    , 14, 14),
-(NULL, 'MovieMaster'   , 'trogoldyte', 15, 15); 
+
 
 INSERT INTO Genere
 values
@@ -52,30 +57,191 @@ values
 (NULL, 'Musical'),
 (NULL, 'Documentary'),
 (NULL, 'Fantasy');
-/*
+
+-- TODO: Normalize
+insert into generegroups
+(GenereGroupID, GenereID, GroupForTvSeriesID, GroupForMovieID, GroupForAdvertismentID)
+values
+(null         ,  1      , NULL              , NULL           , 1             ),
+(null         ,  2      , NULL              , NULL           , 1             ),
+(null         ,  3      , NULL              , NULL           , 1             ),
+(null         ,  4      , NULL              , NULL           , 1             ),
+(null         ,  5      , NULL              , NULL           , 1             ),
+(null         ,  6      , NULL              , NULL           , 1             ),
+(null         ,  7      , NULL              , NULL           , 1             ),
+(null         ,  8      , NULL              , NULL           , 1             ),
+(null         ,  9      , NULL              , NULL           , 1             ),
+(null         , 10      , NULL              , NULL           , 1             ),
+(null         , 11      , NULL              , NULL           , 1             ),
+(null         , 12      , NULL              , NULL           , 1             ),
+(null         , 13      , NULL              , NULL           , 1             ),
+(null         , 14      , NULL              , NULL           , 1             ),
+(null         , 15      , NULL              , NULL           , 1             ),
+(null         ,  4      , NULL              , NULL           , 2             ),
+(null         ,  5      , NULL              , NULL           , 2             ),
+(null         , 15      , NULL              , NULL           , 2             ),
+(null         ,  1      , NULL              , NULL           , 3             ),
+(null         ,  3      , NULL              , NULL           , 3             ),
+(null         ,  3      , NULL              , NULL           , 4             ),
+(null         ,  5      , NULL              , NULL           , 5             ),
+(null         ,  6      , NULL              , NULL           , 5             ),
+(null         ,  8      , NULL              , NULL           , 6             ),
+(null         ,  3      , NULL              , NULL           , 6             ),
+(null         , 11      ,  1                , NULL           , NULL          ),
+(null         ,  9      ,  1                , NULL           , NULL          ),
+(null         ,  2      ,  2                , NULL           , NULL          ),
+(null         ,  9      ,  3                , NULL           , NULL          ),
+(null         , 16      ,  3                , NULL           , NULL          ),
+(null         ,  5      ,  3                , NULL           , NULL          ),
+(null         ,  9      ,  4                , NULL           , NULL          ),
+(null         , 16      ,  4                , NULL           , NULL          ),
+(null         ,  9      ,  5                , NULL           , NULL          ),
+(null         , 16      ,  5                , NULL           , NULL          ),
+(null         ,  7      ,  6                , NULL           , NULL          ),
+(null         , 11      ,  7                , NULL           , NULL          ),
+(null         , 16      ,  8                , NULL           , NULL          ),
+(null         ,  1      ,  9                , NULL           , NULL          ),
+(null         , 11      , 10                , NULL           , NULL          ),
+(null         ,  8      , 11                , NULL           , NULL          ),
+(null         , 15      , 12                , NULL           , NULL          ),
+(null         ,  8      , 13                , NULL           , NULL          ),
+(null         ,  2      , 14                , NULL           , NULL          ),
+(null         ,  5      , 14                , NULL           , NULL          ),
+(null         , 16      , 15                , NULL           , NULL          ),
+(null         ,  7      , NULL              ,  1             , NULL          ),
+(null         ,  8      , NULL              ,  1             , NULL          ),
+(null         ,  2      , NULL              ,  2             , NULL          ),
+(null         ,  2      , NULL              ,  3             , NULL          ),
+(null         ,  4      , NULL              ,  3             , NULL          ),
+(null         ,  1      , NULL              ,  4             , NULL          ),
+(null         ,  1      , NULL              ,  5             , NULL          ),
+(null         , 12      , NULL              ,  6             , NULL          ),
+(null         ,  8      , NULL              ,  7             , NULL          ),
+(null         ,  4      , NULL              ,  8             , NULL          ),
+(null         ,  2      , NULL              ,  9             , NULL          ),
+(null         , 13      , NULL              , 10             , NULL          ),
+(null         ,  4      , NULL              , 11             , NULL          ),
+(null         ,  8      , NULL              , 12             , NULL          ),
+(null         ,  7      , NULL              , 13             , NULL          ),
+(null         ,  4      , NULL              , 14             , NULL          ),
+(null         ,  1      , NULL              , 15             , NULL          );
+
+
 INSERT INTO Advertisments
                -- should be time
-(AdvertismentID, AdvertismentLength, AdvertismentPay, TargetGeneres)
+(AdvertismentID, Advertiser          , AdvertismentLength, AdvertismentPay, TargetGeneres)
 VALUES
-(NULL          , "00:00:05.37"         , 2005.74        , 01),
-(NULL          , "00:00:02.40"         , 9000.01        , 02),
-(NULL          , "00:00:03.14"         , 1003.50        , 03),
-(NULL          , "00:00:02.10"         ,  903.00        , 04),
-(NULL          , "00:00:03.37"         , 1200.25        , 05),
-(NULL          , "00:00:06.59"         , 3389.03        , 06),
-(NULL          , "00:00:01.47"         ,  500.11        , 07),
-(NULL          , "00:00:00.31"         ,  250.98        , 08),
-(NULL          , "00:00:02.40"         ,  999.43        , 09),
-(NULL          , "00:00:01.33"         ,  300.00        , 10),
-(NULL          , "00:00:02.44"         ,  330.08        , 11),
-(NULL          , "00:00:03.21"         , 1200.00        , 12),
-(NULL          , "00:00:01.11"         , 2200.30        , 13),
-(NULL          , "00:00:02.02"         , 4045.87        , 14),
-(NULL          , "00:00:00.59"         ,  200.98        , 15);
+(NULL          , "Coke"              , "00:00:05.37"     , 2005.74        ,  1),
+(NULL          , "Pepsi"             , "00:00:02.40"     , 9000.01        ,  1),
+(NULL          , "League, of Legends", "00:00:03.14"     , 1003.50        ,  2),
+(NULL          , "Redenboker"        , "00:00:02.10"     ,  903.00        ,  1),
+(NULL          , "Jiffy Lube"        , "00:00:03.37"     , 1200.25        ,  3),
+(NULL          , "Trojan"            , "00:00:06.59"     , 3389.03        ,  4),
+(NULL          , "Pet Smart"         , "00:00:01.47"     ,  500.11        ,  5),
+(NULL          , "Jiff"              , "00:00:00.31"     ,  250.98        ,  6),
+(NULL          , "McDonalds"         , "00:00:02.40"     ,  999.43        ,  1),
+(NULL          , "VideoStreemers"    , "00:00:01.33"     ,  300.00        ,  1),
+(NULL          , "20th Century Fox"  , "00:00:02.44"     ,  330.08        ,  1),
+(NULL          , "Disney"            , "00:00:03.21"     , 1200.00        ,  1),
+(NULL          , "Denteen Ice"       , "00:00:01.11"     , 2200.30        ,  1),
+(NULL          , "Stride"            , "00:00:02.02"     , 4045.87        ,  1),
+(NULL          , "FaceBook"          , "00:00:00.59"     ,  200.98        ,  1);
 
+insert into videocontent
+(VideoContentID, VideoContent)
+values
+(NULL          , "a;lskdf"),
+(NULL          , "aojd;nl"),
+(NULL          , "a;odnvk"),
+(NULL          , "asldjbn"),
+(NULL          , "da.kdmn"),
+(NULL          , "asdanlw"),
+(NULL          , "aodsjfa"),
+(NULL          , ".lkjfan"),
+(NULL          , "dfiwhjb"),
+(NULL          , "sfjkblu"),
+(NULL          , "skjdfls"),
+(NULL          , "slkdjfl"),
+(NULL          , "slkjdfl"),
+(NULL          , "sljkdns"),
+(NULL          , "sflkjfs");
+
+insert into movies
+values
+(null,  1, "The Lion King"             ,  1),
+(null,  2, "The Mask"                  ,  2),
+(null,  3, "A knights Tale"            ,  3),
+(null,  4, "Rocky Horrer Picture Show" ,  4),
+(null,  5, "Saw"                       ,  5),
+(null,  6, "Fival Goes West"           ,  6),
+(null,  7, "Nightmare Before Christmas",  7),
+(null,  8, "Hurt Locker"               ,  8),
+(null,  9, "The Intern"                ,  9),
+(null, 10, "Blind Side"                , 10),
+(null, 11, "Titan AE"                  , 11),
+(null, 12, "James and the Giant Peach" , 12),
+(null, 13, "Rocky"                     , 13),
+(null, 14, "The Rock"                  , 14),
+(null, 15, "It"                        , 15);
+
+insert into tvseries
+values
+(null, "Dexter"               ), -- , 1),
+(null, "Family Guys"          ), -- , 2),
+(null, "Dr Who"               ), -- , 3),
+(null, "Sherlock"             ), -- , 4),
+(null, "Game of Throans"      ), -- , 5),
+(null, "Scorpion"             ), -- , 6),
+(null, "CSI"                  ), -- , 7),
+(null, "Merlin"               ), -- , 8),
+(null, "Fear Factor"          ), -- , 9),
+(null, "Murder She Wrote"     ), -- , 10),
+(null, "Dragon Tails"         ), -- , 11),
+(null, "Tails from the Crypts"), -- , 12),
+(null, "Vegi Tails"           ), -- , 13),
+(null, "Futurama"             ), -- , 14),
+(null, "Full Metal Alchamist" ); -- , 15);
+
+insert into episodes
+values
+(null,  1, "episode 1", "n/a",  1),
+(null,  2, "episode 1", "n/a",  2),
+(null,  3, "episode 1", "n/a",  3),
+(null,  4, "episode 1", "n/a",  4),
+(null,  5, "episode 1", "n/a",  5),
+(null,  6, "episode 1", "n/a",  6),
+(null,  7, "episode 1", "n/a",  7),
+(null,  8, "episode 1", "n/a",  8),
+(null,  9, "episode 1", "n/a",  9),
+(null, 10, "episode 1", "n/a", 10),
+(null, 11, "episode 1", "n/a", 11),
+(null, 12, "episode 1", "n/a", 12),
+(null, 13, "episode 1", "n/a", 13),
+(null, 14, "episode 1", "n/a", 14),
+(null, 15, "episode 1", "n/a", 15);
+
+insert into season
+values
+(null,  1,  1, 1),
+(null,  2,  2, 1),
+(null,  3,  3, 1),
+(null,  4,  4, 1),
+(null,  5,  5, 1),
+(null,  6,  6, 1),
+(null,  7,  7, 1),
+(null,  8,  8, 1),
+(null,  9,  9, 1),
+(null, 10, 10, 1),
+(null, 11, 11, 1),
+(null, 12, 12, 1),
+(null, 13, 13, 1),
+(null, 14, 14, 1),
+(null, 15, 15, 1);
+
+/*
 INSERT INTO ServerClusters
 (ClusterID, RegionID)
-VALUES-- -|---------
+VALUES
 (NULL     ,  1),
 (NULL     ,  2),
 (NULL     ,  3),
@@ -92,7 +258,7 @@ VALUES-- -|---------
 (NULL     , 14),
 (NULL     , 15);
 
-INSERT INTO servers
+INSERT INTO Servers
 (ServerID, ClusterID, ServerAge, RunningCostPerHour, WritingPerformance, ReadingPerformance)
 VALUES
 (NULL    , 1        , 5        , 0.07              ,  101              ,  200),
@@ -290,7 +456,7 @@ VALUES
 (NULL    , 15       , 4        , 0.03              ,  500              ,  500),
 (NULL    , 15       , 4        , 0.04              ,  600              ,  650),
 (NULL    , 15       , 1        , 0.19              , 5000              , 5000);
- 
+ */
 INSERT INTO Subscription
 (SubscriptionID, SubscriptionName         , SubscriptionPrice)
 VALUES
@@ -318,22 +484,40 @@ VALUES
 (NULL          , "Fundamental: Quadruple" ,   5.99 ),
 (NULL          , "Fundamental: Triple"    ,   3.00 ),
 (NULL          , "Fundamental: Double"    ,   1.75 ),
-(NULL          , "Fundamental: Single"    ,   1.00 );*/
+(NULL          , "Fundamental: Single"    ,   1.00 );
+
+INSERT INTO Account
+VALUES
+(NULL, 'AndrewJohanzon', 'purple11'  ,  1,  1),
+(NULL, 'DarlaSmith'    , 'Dragons11' ,  2,  2),
+(NULL, 'GeremeyLang'   , '11Dark30'  ,  3,  3),
+(NULL, 'ChrisChristy'  , 'angels'    ,  4,  4),
+(NULL, 'JohnHector'    , 'draco'     ,  5,  5),
+(NULL, 'KyleClarkson'  , 'Metor'     ,  6,  6),
+(NULL, 'BruceWayne'    , 'LetterB'   ,  7,  7),
+(NULL, 'KevenSmith'    , 'clerks'    ,  8,  8),
+(NULL,'SaniaTwain'     , 'songstress',  9,  9),
+(NULL, 'FrankAbignail' , 'abcd'      , 10, 10),
+(NULL, 'jjford768'     , 'darkDark'  , 11, 11),
+(NULL, 'catwomanan45'  , 'Draco1947' , 12, 12),
+(NULL, 'rboom8'        , 'binary12'  , 13, 13),
+(NULL, 'Abudula99'     , 'Lefty4'    , 14, 14),
+(NULL, 'MovieMaster'   , 'trogoldyte', 15, 15); 
 
 INSERT INTO Billing
 VALUES
-(NULL, 5465878954321569,  1,  1),
-(NULL, 7895653241265548,  2,  2),
-(NULL, 1231254682568456,  3,  3),
-(NULL, 6985645698231546,  4,  4),
-(NULL, 4545698521368954,  5,  5),
-(NULL, 7474858596963215,  6,  6),
-(NULL, 3598545687321651,  7,  7),
-(NULL, 4456585123698751,  8,  8),
-(NULL, 1111949207511864,  9,  9),
-(NULL, 5585456932156854, 10, 10),
-(NULL, 9896354569875213, 11, 11),
-(NULL, 4565878521385687, 12, 12),
-(NULL, 5569878452154876, 13, 13),
-(NULL, 1254804570568902, 14, 14),
-(NULL, 0202578063804832, 15, 15);
+(NULL, "5465878954321569",  1,  1),
+(NULL, "7895653241265548",  2,  2),
+(NULL, "1231254682568456",  3,  3),
+(NULL, "6985645698231546",  4,  4),
+(NULL, "4545698521368954",  5,  5),
+(NULL, "7474858596963215",  6,  6),
+(NULL, "3598545687321651",  7,  7),
+(NULL, "4456585123698751",  8,  8),
+(NULL, "1111949207511864",  9,  9),
+(NULL, "5585456932156854", 10, 10),
+(NULL, "9896354569875213", 11, 11),
+(NULL, "4565878521385687", 12, 12),
+(NULL, "5569878452154876", 13, 13),
+(NULL, "1254804570568902", 14, 14),
+(NULL, "0202578063804832", 15, 15);
