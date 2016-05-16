@@ -8,53 +8,54 @@
         SELECT
             password AS Result
         FROM
-        Accounts
+        account
         WHERE
-            password NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
+            password NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][.right-square-bracket.][.left-square-bracket.]]]+"
         ) AS WeakPasswordsQuery,
         (
         SELECT
             password AS Result
         FROM
-        Accounts
+        Account
         WHERE
-            pass_word NOT REGEXP "[a-zA-Z[:digit:]]+" OR password NOT REGEXP "[!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            password NOT REGEXP "[a-zA-Z[:digit:]]+" OR password NOT REGEXP "[!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][.right-square-bracket.][.left-square-bracket.]]+"
         ) AS SemiStrongPasswordsQuery,
         (
         SELECT
             password AS Result
         FROM
-        Accounts
+        Account
         WHERE
-            password REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            password REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][.right-square-bracket.][.left-square-bracket.]]+"
         ) AS StrongPasswordsQuery
-        ,Accounts;
+        ,Account;
 
--- ListAllEpisoidsBySeasion
+-- ListAllEpisoidsByseason
     SELECT
         SeriesName,
-        SeasionNumber,
-        EpisoideNumber,
-        EpisoideName
+        SeasonNumber,
+        e.EpisodeID, 
+        EpisodeName
     FROM
-        TvSeries tv JOIN Seasion  s ON tv.TvSeriesId = s.TvSeriesId
-                    JOIN Episoids e ON s.SeasionID = e.SeasionID
+        TvSeries tv JOIN Season  s ON tv.TvSeriesId = s.TvSeriesId
+                    JOIN episodes e ON s.EpisodeID = e.EpisodeID
+                    
     ORDER BY
-        TvSeriesId, SeasionNumber, EpisoideID;
+        tv.TvSeriesId, SeasonNumber, e.EpisodeID;
 
 
 --  GeneresByPopularity
-    SELECT
+ /*   SELECT
         GenereName
-        (COUNT(Episoids.Views) + Count(Movies.Views)) AS GenereViews
+        (COUNT(episodes.Views) + Count(Movies.Views)) AS GenereViews
     FROM
-        Episoids JOIN Generes ON Episoids.GenereID = Generes.GenereID
+        episodes JOIN genere ON episodes.GenereID = Generes.GenereID
                  JOIN Movies  ON Generes.GenereID = Movies.Generes.GenereID
     GROUP BY
         Genere;
 
 -- ExistingGenereCombinations
-    SELECT
+/*    SELECT
         DistinctGenereCombinations.GenereGroupID,
         DistinctGenereCombinations.GenereName
     FROM
@@ -69,7 +70,7 @@
         AS DistinctGenereCombinations                 
     ORDER BY
         DistinctGenereCombinations.GenereGroupID, DistinctGenereCombinations.GenereName;   
-
+*/
 -- MovieToTvSeriesRatio
     SELECT
         CONCAT(ROUND( COUNT(MovieId)/(Count(MovieId)+COUNT(TvSeriesId)*100)), " : ", ROUND( (1-COUNT(MovieId)/(Count(MovieId)+COUNT(TvSeriesId))*100), 2)) AS Ratio 
@@ -109,10 +110,10 @@
 
 -- UsersPerCountry
     SELECT
-        COUNT(AccountID) AS TotalUsers,
-        Account.Country
+        COUNT(AccountID) AS TotalUsers, addresses.Country
+       
     FROM
-        Accounts
+        Account JOIN addresses ON account.AddressID = addresses.AddressID
     GROUP BY
         Country;
 
@@ -122,19 +123,19 @@
         SUM(WritingPerformance) AS 'Total Writing Performance (GBS)',
         SUM(ReadingPerformance) AS 'Total Reading Performance (GBS)'
     FROM
-        Servers JOIN ServerClusters ON Servers.ServerID        = ServerClusters.ServerID
-                JOIN Regions        ON ServerClusters.RegionID = Regions.RegionID
+        Servers JOIN ServerClusters ON Servers.ClusterID        = ServerClusters.ClusterID
+                JOIN Region        ON ServerClusters.RegionID = Region.RegionID
     GROUP BY
         RegionName;
 
 -- ProfitOfEachCountry
     SELECT
         RegionName,
-        ROUND((SUM(SubscriptionPrice) + Sum(AdvertismentPay * 4 * 8760)/COUNT(Regions.RegionID)), 2) - SUM(RunningCostPerHour * 8760) AS Profit
+        ROUND((SUM(SubscriptionPrice) + Sum(AdvertismentPay * 4 * 8760)/COUNT(Region.RegionID)), 2) - SUM(RunningCostPerHour * 8760) AS Profit
     FROM
         Account JOIN Subscription ON Account.SubscriptionID = Subscription.SubscriptionID,
 	Advertisments,
-        Servers JOIN ServerClusters ON Servers.ServerID        = ServerClusters.ServerID
-                JOIN Regions        ON ServerClusters.RegionID = Regions.RegionID
+        Servers JOIN ServerClusters ON Servers.ClusterID        = ServerClusters.ClusterID
+                JOIN Region        ON ServerClusters.RegionID = Region.RegionID
    GROUP BY
-        Regions;
+        RegionName;
