@@ -1,23 +1,23 @@
-CREATE OR REPLACE VIEW ServerStatsView
+CREATE OR REPLACE VIEW ServerStatsView AS
 (
 SELECT
-        RegienName,
+        RegionName,
 	ROUND(AVG(RunningCostPerHour), 2) AS AvgClusterMaintenceCost,
 	ROUND(AVG(WritingPerformance), 3) AS AvgReadingPerformance,
-	ROUND(AVG(ReadingPerformance), 3) AS AvgWritingPerformance,
+	ROUND(AVG(ReadingPerformance), 3) AS AvgWritingPerformance
 FROM
 	Servers JOIN ServerClusters ON Servers.ClusterID = ServerClusters.ClusterID
-		JOIN Region	    ON ServerClusters.RegienID = Region.RegionID
+		    JOIN Region	        ON ServerClusters.RegionID = Region.RegionID
 GROUP BY
 	ClusterID
 ORDER BY
-	RegienName;
-)
+	RegionName
+);
 
-CREATE OR REPLACE VIEW ContentPopularityView
+CREATE OR REPLACE VIEW ContentPopularityView AS
 (
 SELECT
-	MostPopularShowQuery.Result AS MostPopularShow
+	MostPopularShowQuery.Result AS MostPopularShow,
 	MostPopularMovieQuery.Result AS MostPopularMovie
 	-- procedure 'getTop5GeneresAsString' needs to be created before use
 	getTop5GeneresAsString() AS TopFiveGeneres
@@ -40,10 +40,10 @@ FROM
 	HAVING
 		BaseQuery.Views = Max(BaseQuery.SumViews)
 	LIMIT 1;	
-	)AS MostPopularShowQuery
-)
+	) AS MostPopularShowQuery
+);
 
-CREATE OR REPLACE VIEW MoneyStatsView
+CREATE OR REPLACE VIEW MoneyStatsView AS
 (
 SELECT
 	CostsQuery.Result AS Costs,
@@ -66,4 +66,4 @@ FROM
 		Account JOIN Subscription ON Account.SubscriptionID = Subscription.SubscriptionID,
 		Advertisments
 	) AS GainsQuery
-)
+);

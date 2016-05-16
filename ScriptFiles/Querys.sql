@@ -10,7 +10,7 @@
         FROM
         Accounts
         WHERE
-            password NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
+            password NOT REGEXP "[a-zA-Z[:digit:][!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]]+"
         ) AS WeakPasswordsQuery,
         (
         SELECT
@@ -18,7 +18,7 @@
         FROM
         Accounts
         WHERE
-            pass_word NOT REGEXP "[a-zA-Z[:digit:]]+" OR password NOT REGEXP "[!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            pass_word NOT REGEXP "[a-zA-Z[:digit:]]+" OR password NOT REGEXP "[!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
         ) AS SemiStrongPasswordsQuery,
         (
         SELECT
@@ -26,7 +26,7 @@
         FROM
         Accounts
         WHERE
-            password REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;"'<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
+            password REGEXP "[a-zA-Z[:digit:]!@#$%^&*_+-=:;<>?/~`|\{}[.(.][.).][:right-square-bracket:][:left-square-bracket:]]+"
         ) AS StrongPasswordsQuery
         ,Accounts;
 
@@ -35,7 +35,7 @@
         SeriesName,
         SeasionNumber,
         EpisoideNumber,
-        EpisoideName,
+        EpisoideName
     FROM
         TvSeries tv JOIN Seasion  s ON tv.TvSeriesId = s.TvSeriesId
                     JOIN Episoids e ON s.SeasionID = e.SeasionID
@@ -58,28 +58,28 @@
         DistinctGenereCombinations.GenereGroupID,
         DistinctGenereCombinations.GenereName
     FROM
-        (Generes g1 JOIN GenereGroups gg1 ON g1.GenereID = gg1.GenereID)
+        ((Generes g1 JOIN GenereGroups gg1 ON g1.GenereID = gg1.GenereID)
                     JOIN
         (Generes g2 JOIN GenereGroups gg2 ON g2.GenereID = gg2.GenereID)
         ON
         -- applys emulated outer join to each GenereGroup
         -- ----------------------------------------------------------
                       -- (left outer join)       (right outer join)
-        gg1 = gg2 AND (g1 NOT EXIST IN(g2)  OR  g2 NOT EXIST IN(g1))
+        gg1 = gg2 AND (g1.GenereName NOT IN(g2.GenereName)  OR  g2.GenereName NOT IN(g1.GenereName)))
         AS DistinctGenereCombinations                 
     ORDER BY
         DistinctGenereCombinations.GenereGroupID, DistinctGenereCombinations.GenereName;   
 
 -- MovieToTvSeriesRatio
     SELECT
-        CONCAT(ROUND( (COUNT(MovieId)/(Count(MovieId)+COUNT(TvSeriesId)*100), " : ", ROUND( (1-COUNT(MovieId)/(Count(MovieId)+COUNT(TvSeriesId)*100), 2)) AS Ratio
-    FROM
+        CONCAT(ROUND( COUNT(MovieId)/(Count(MovieId)+COUNT(TvSeriesId)*100)), " : ", ROUND( (1-COUNT(MovieId)/(Count(MovieId)+COUNT(TvSeriesId))*100), 2)) AS Ratio 
+	FROM
         Movies, TvSeries;
 
 -- TotalSubscribersForEachSubscribtion
     SELECT
-        SubscriptionType1.Total AS 'Subscribed To Type1'
-        SubscriptionType2.Total AS 'Subscribed To Type2'
+        SubscriptionType1.Total AS 'Subscribed To Type1',
+        SubscriptionType2.Total AS 'Subscribed To Type2',
         SubscriptionType3.Total AS 'Subscribed To Type3'
    FROM
         (
@@ -109,7 +109,7 @@
 
 -- UsersPerCountry
     SELECT
-        COUNT(AccountID) AS TotalUsers
+        COUNT(AccountID) AS TotalUsers,
         Account.Country
     FROM
         Accounts

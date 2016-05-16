@@ -179,7 +179,7 @@ values
 (null,  9, "The Intern"                ,  9),
 (null, 10, "Blind Side"                , 10),
 (null, 11, "Titan AE"                  , 11),
-(null, 12, "James and the Giant Peach" , 12),
+(null, 12, "James and the Giant Peach" , 12), 
 (null, 13, "Rocky"                     , 13),
 (null, 14, "The Rock"                  , 14),
 (null, 15, "It"                        , 15);
@@ -238,7 +238,6 @@ values
 (null, 14, 14, 1),
 (null, 15, 15, 1);
 
-/*
 INSERT INTO ServerClusters
 (ClusterID, RegionID)
 VALUES
@@ -456,7 +455,7 @@ VALUES
 (NULL    , 15       , 4        , 0.03              ,  500              ,  500),
 (NULL    , 15       , 4        , 0.04              ,  600              ,  650),
 (NULL    , 15       , 1        , 0.19              , 5000              , 5000);
- */
+
 INSERT INTO Subscription
 (SubscriptionID, SubscriptionName         , SubscriptionPrice)
 VALUES
